@@ -47,7 +47,7 @@ extension HomeViewController {
   private func setConstraints() {
     self.collection.snp.makeConstraints { make in
       make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
-      make.left.right.equalToSuperview()
+      make.leading.trailing.equalToSuperview()
       make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
     }
   }
@@ -108,8 +108,8 @@ extension HomeViewController {
       .subscribe(onNext: { [weak self] goods in
         guard let self = self else { return }
         
-        if let row = self.viewModel.goods.firstIndex(where: { $0.id == goods.id }) {
-          let cell = self.collection.cellForItem(at: IndexPath(row: row, section: 0))
+        if let item = self.viewModel.goods.firstIndex(where: { $0.id == goods.id }) {
+          let cell = self.collection.cellForItem(at: IndexPath(item: item, section: 0))
           if let cell = cell as? HomeProductCell {
             cell.bind(goods)
           }
@@ -129,7 +129,7 @@ extension HomeViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeProductCell", for: indexPath)
     if let cell = cell as? HomeProductCell {
-      cell.bind(self.viewModel.goods[indexPath.row])
+      cell.bind(self.viewModel.goods[indexPath.item])
     }
     return cell
   }
@@ -140,31 +140,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDelegate
  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let width = UIScreen.main.bounds.width
-    let height = self.cellHeight(row: indexPath.row)
-
+    let height = HomeProductCell.cellHeight(goods: self.viewModel.goods[indexPath.item])
     return CGSize(width: width, height: height)
-  }
-  
-  private func cellHeight(row: Int) -> CGFloat {
-    let goods = self.viewModel.goods[row]
-    
-    let maxSize = CGSize(width: UIScreen.main.bounds.width - 112.0, height: 1000.0)
-    
-    let priceHeight = NSString(string: goods.price?.decimalString ?? "").boundingRect(with: maxSize,
-                                                                                      options: .usesFontLeading.union(.usesLineFragmentOrigin),
-                                                                                      attributes: [.font: UIFont.systemFont(ofSize: 15.0, weight: .bold)],
-                                                                                      context: nil).height
-      
-    let nameHeight = NSString(string: goods.name ?? "").boundingRect(with: maxSize,
-                                                                     options: .usesFontLeading.union(.usesLineFragmentOrigin),
-                                                                     attributes: [.font: UIFont.systemFont(ofSize: 15.0, weight: .regular)],
-                                                                     context: nil).height
-    let newBadgeHeight = NSString(string: "new").boundingRect(with: maxSize,
-                                                              options: .usesFontLeading.union(.usesLineFragmentOrigin),
-                                                              attributes: [.font: UIFont.systemFont(ofSize: 15.0, weight: .medium)],
-                                                              context: nil).height + 8.0
-    
-    return priceHeight + nameHeight + newBadgeHeight + 62.0
   }
   
   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -187,7 +164,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDelegate
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     guard let reloadType = try? self.viewModel.reloadAction.value(), reloadType != .last else { return }
     
-    if indexPath.row == self.viewModel.goods.count - 1 {
+    if indexPath.item == self.viewModel.goods.count - 1 {
       self.viewModel.getHomeData(lastId: self.viewModel.goods.last?.id)
     }
   }

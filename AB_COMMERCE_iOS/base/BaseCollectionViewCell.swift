@@ -27,8 +27,6 @@ class BaseCollectionViewCell: UICollectionViewCell {
     self.disposeBag = DisposeBag()
   }
   
-  func commonInit() {
-    disposeBag = DisposeBag()
-  }
+  func commonInit() { }
   
 }

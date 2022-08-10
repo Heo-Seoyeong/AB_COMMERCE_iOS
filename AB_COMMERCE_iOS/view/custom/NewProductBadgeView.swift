@@ -15,7 +15,7 @@ class NewProductBadgeView: BaseView {
     let label = UILabel()
     label.text = "NEW"
     label.textColor = UIColor.aTextSecondary
-    label.font = UIFont.systemFont(ofSize: 15.0, weight: .medium)
+    label.font = UIFont.systemFont(ofSize: 13.0, weight: .medium)
     return label
   }()
   
@@ -23,7 +23,7 @@ class NewProductBadgeView: BaseView {
     super.commonInit()
     
     self.setUI()
-    self.setConstraints()
+    self.setNeedsUpdateConstraints()
   }
   
 }
@@ -38,13 +38,12 @@ extension NewProductBadgeView {
     self.addSubview(self.newLabel)
   }
   
-  private func setConstraints() {
+  override func updateConstraints() {
     self.newLabel.snp.makeConstraints { make in
-      make.top.equalToSuperview().offset(4.0)
-      make.bottom.equalToSuperview().offset(-4.0)
-      make.left.equalToSuperview().offset(6.0)
-      make.right.equalToSuperview().offset(-6.0)
+      make.center.equalToSuperview()
     }
+    
+    super.updateConstraints()
   }
   
 }

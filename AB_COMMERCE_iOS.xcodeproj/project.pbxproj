@@ -24,7 +24,6 @@
 		2835FB5D28A0B5BB009E8404 /* BannerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835FB5C28A0B5BB009E8404 /* BannerHeaderView.swift */; };
 		2835FB5F28A0B60E009E8404 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835FB5E28A0B60E009E8404 /* TabBarController.swift */; };
 		2835FB6328A0B79D009E8404 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835FB6228A0B79D009E8404 /* BaseViewController.swift */; };
-		2835FB6628A0BB5D009E8404 /* UIGestureRecognizer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835FB6528A0BB5D009E8404 /* UIGestureRecognizer+Extension.swift */; };
 		2835FB6C28A0C0EC009E8404 /* Goods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835FB6B28A0C0EC009E8404 /* Goods.swift */; };
 		2835FB6E28A0C0FC009E8404 /* Banners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835FB6D28A0C0FC009E8404 /* Banners.swift */; };
 		2835FB7028A0CE23009E8404 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835FB6F28A0CE23009E8404 /* UIColor+Extension.swift */; };
@@ -85,7 +84,6 @@
 		2835FB5C28A0B5BB009E8404 /* BannerHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerHeaderView.swift; sourceTree = "<group>"; };
 		2835FB5E28A0B60E009E8404 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		2835FB6228A0B79D009E8404 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		2835FB6528A0BB5D009E8404 /* UIGestureRecognizer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+Extension.swift"; sourceTree = "<group>"; };
 		2835FB6B28A0C0EC009E8404 /* Goods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goods.swift; sourceTree = "<group>"; };
 		2835FB6D28A0C0FC009E8404 /* Banners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banners.swift; sourceTree = "<group>"; };
 		2835FB6F28A0CE23009E8404 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -215,7 +213,6 @@
 		2835FB6428A0BB4C009E8404 /* extension */ = {
 			isa = PBXGroup;
 			children = (
-				2835FB6528A0BB5D009E8404 /* UIGestureRecognizer+Extension.swift */,
 				2835FB6F28A0CE23009E8404 /* UIColor+Extension.swift */,
 				2835FB7728A0E0BA009E8404 /* Int+Extension.swift */,
 				2835FB9228A22B44009E8404 /* NSNotification+Extension.swift */,
@@ -589,7 +586,6 @@
 			files = (
 				2835FB2328A097AF009E8404 /* AppDelegate.swift in Sources */,
 				2835FB7E28A0EBD5009E8404 /* HomeRepository.swift in Sources */,
-				2835FB6628A0BB5D009E8404 /* UIGestureRecognizer+Extension.swift in Sources */,
 				2835FB9128A21EEE009E8404 /* GoodsRealm.swift in Sources */,
 				2835FB8A28A0F553009E8404 /* Home.swift in Sources */,
 				2835FB5D28A0B5BB009E8404 /* BannerHeaderView.swift in Sources */,
@@ -714,7 +710,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -768,7 +764,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

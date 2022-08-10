@@ -25,8 +25,11 @@ class BaseView: UIView {
     commonInit()
   }
   
+  deinit {
+    self.disposeBag = DisposeBag()
+  }
+  
   func commonInit() {
-    disposeBag = DisposeBag()
     self.backgroundColor = .white
   }
   

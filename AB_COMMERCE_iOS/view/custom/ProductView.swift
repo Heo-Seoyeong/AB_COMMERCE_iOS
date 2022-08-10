@@ -149,6 +149,12 @@ extension ProductView {
     
     self.infoStackView.addArrangedSubview(self.nameLabel)
     
+    newBadgeView.setContentHuggingPriority(.init(rawValue: 800.0), for: .horizontal)
+    newBadgeView.setContentHuggingPriority(.init(rawValue: 800.0), for: .vertical)
+    
+    sellCountLabel.setContentHuggingPriority(.init(rawValue: 800.0), for: .horizontal)
+    sellCountLabel.setContentHuggingPriority(.init(rawValue: 800.0), for: .vertical)
+    
     self.infoStackView.addArrangedSubview(self.sellStackView)
     self.sellStackView.addArrangedSubview(self.newBadgeView)
     self.sellStackView.addArrangedSubview(self.sellCountLabel)
@@ -160,26 +166,38 @@ extension ProductView {
   override func updateConstraints() {
     self.thumbnailImageView.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(16.0)
-      make.left.equalToSuperview().offset(16.0)
+      make.leading.equalToSuperview().offset(16.0)
       make.height.width.equalTo(80.0)
     }
     
     self.wishButton.snp.makeConstraints { make in
       make.top.equalTo(self.thumbnailImageView.snp.top)
-      make.right.equalTo(self.thumbnailImageView.snp.right)
+      make.trailing.equalTo(self.thumbnailImageView.snp.trailing)
       make.width.height.equalTo(44.0)
     }
     
     self.infoStackView.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(16.0)
-      make.left.equalTo(self.thumbnailImageView.snp.right).offset(12.0)
-      make.right.equalToSuperview().offset(-16.0)
+      make.leading.equalTo(self.thumbnailImageView.snp.trailing).offset(12.0)
+      make.trailing.equalToSuperview().offset(-16.0)
+      make.bottom.equalToSuperview().offset(-16.0)
+    }
+    
+    self.priceStackView.snp.makeConstraints { make in
+      make.height.equalTo(20.0)
+    }
+    
+    self.sellStackView.snp.makeConstraints { make in
+      make.height.equalTo(24.0)
+    }
+    
+    self.newBadgeView.snp.makeConstraints { make in
+      make.width.equalTo(46.0)
     }
     
     self.bottomBarView.snp.makeConstraints { make in
-      make.top.equalTo(self.infoStackView.snp.bottom).offset(16.0)
-      make.left.right.bottom.equalToSuperview()
-      make.height.equalTo(0.33)
+      make.leading.trailing.bottom.equalToSuperview()
+      make.height.equalTo(0.3)
     }
     
     super.updateConstraints()

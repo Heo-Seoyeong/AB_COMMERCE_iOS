@@ -51,7 +51,7 @@ extension WishViewController {
   private func setConstraints() {
     self.collection.snp.makeConstraints { make in
       make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
-      make.left.right.equalToSuperview()
+      make.leading.trailing.equalToSuperview()
       make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
     }
   }
@@ -108,7 +108,7 @@ extension WishViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WishProductCell", for: indexPath)
     if let cell = cell as? WishProductCell {
-      cell.bind(self.viewModel.goods[indexPath.row])
+      cell.bind(self.viewModel.goods[indexPath.item])
     }
     return cell
   }
@@ -119,31 +119,9 @@ extension WishViewController: UICollectionViewDelegate, UICollectionViewDelegate
  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let width = UIScreen.main.bounds.width
-    let height = self.cellHeight(row: indexPath.row)
+    let height = HomeProductCell.cellHeight(goods: self.viewModel.goods[indexPath.item])
 
     return CGSize(width: width, height: height)
-  }
-  
-  private func cellHeight(row: Int) -> CGFloat {
-    let goods = self.viewModel.goods[row]
-    
-    let maxSize = CGSize(width: UIScreen.main.bounds.width - 112.0, height: 1000.0)
-    
-    let priceHeight = NSString(string: goods.price?.decimalString ?? "").boundingRect(with: maxSize,
-                                                                                      options: .usesFontLeading.union(.usesLineFragmentOrigin),
-                                                                                      attributes: [.font: UIFont.systemFont(ofSize: 15.0, weight: .bold)],
-                                                                                      context: nil).height
-      
-    let nameHeight = NSString(string: goods.name ?? "").boundingRect(with: maxSize,
-                                                                     options: .usesFontLeading.union(.usesLineFragmentOrigin),
-                                                                     attributes: [.font: UIFont.systemFont(ofSize: 15.0, weight: .regular)],
-                                                                     context: nil).height
-    let newBadgeHeight = NSString(string: "new").boundingRect(with: maxSize,
-                                                              options: .usesFontLeading.union(.usesLineFragmentOrigin),
-                                                              attributes: [.font: UIFont.systemFont(ofSize: 15.0, weight: .medium)],
-                                                              context: nil).height + 8.0
-    
-    return priceHeight + nameHeight + newBadgeHeight + 62.0
   }
   
 }

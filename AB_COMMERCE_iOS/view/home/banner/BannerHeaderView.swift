@@ -31,7 +31,7 @@ class BannerHeaderView: UICollectionReusableView {
     super.init(frame: frame)
     
     self.setUI()
-    self.setConstraints()
+    self.setNeedsUpdateConstraints()
     self.setCollectionView()
   }
   
@@ -48,13 +48,13 @@ extension BannerHeaderView {
     self.addSubview(self.pageView)
   }
   
-  private func setConstraints() {
+  override func updateConstraints() {
     self.collection.snp.makeConstraints { make in
-      make.top.left.right.bottom.equalToSuperview()
+      make.top.leading.trailing.bottom.equalToSuperview()
     }
     
     self.pageView.snp.makeConstraints { make in
-      make.right.equalToSuperview().offset(-16.0)
+      make.trailing.equalToSuperview().offset(-16.0)
       make.bottom.equalToSuperview().offset(-16.0)
       make.height.equalTo(24.0)
       make.width.equalTo(40.0)
@@ -84,7 +84,7 @@ extension BannerHeaderView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BannerHeaderImageCell", for: indexPath)
     if let cell = cell as? BannerHeaderImageCell {
-      cell.bind(self.banners[indexPath.row].image)
+      cell.bind(self.banners[indexPath.item].image)
     }
     return cell
   }
@@ -111,7 +111,7 @@ extension BannerHeaderView: UICollectionViewDelegate, UICollectionViewDelegateFl
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     let center = CGPoint(x: scrollView.contentOffset.x + (scrollView.frame.width / 2), y: (scrollView.frame.height / 2))
     if let indexPath = self.collection.indexPathForItem(at: center) {
-      self.pageView.currentCount = indexPath.row + 1
+      self.pageView.currentCount = indexPath.item + 1
     }
   }
   

@@ -41,8 +41,7 @@ extension Commerce: TargetType {
     switch self {
     case let .productList(lastId):
       if let lastId = lastId {
-        var params: [String: Any] = [:]
-        params["lastId"] = lastId
+        let params: [String: Any] = ["lastId": lastId]
         return .requestParameters(parameters: params, encoding: URLEncoding.default)
       }
       return .requestPlain

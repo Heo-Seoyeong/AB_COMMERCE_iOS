@@ -20,7 +20,7 @@ class PageControlView: BaseView {
     super.commonInit()
     
     self.setUI()
-    self.setConstraints()
+    self.setNeedsUpdateConstraints()
   }
   
   var totalCount: Int = 0
@@ -42,7 +42,7 @@ extension PageControlView {
     self.addSubview(self.countLabel)
   }
   
-  private func setConstraints() {
+  override func updateConstraints() {
     self.countLabel.snp.makeConstraints { make in
       make.center.equalToSuperview()
     }
