@@ -37,7 +37,7 @@ extension HomeViewModel {
   
   func getHomeData(lastId: Int? = nil) {
     if let lastId = lastId {
-      self.repository.getHomeProductList(lastId: lastId)
+      self.repository.getHomeGoodsList(lastId: lastId)
         .subscribe { goodsList in
           guard !goodsList.isEmpty else {
             self.reloadAction.onNext(.last)
@@ -47,7 +47,7 @@ extension HomeViewModel {
           self.goods += goodsList
           self.reloadAction.onNext(.more)
         } onError: { error in
-          print("API Error : getHomeProductList : \(error.localizedDescription)")
+          print("API Error : getHomeGoodsList : \(error.localizedDescription)")
         }
         .disposed(by: self.disposeBag)
     } else {

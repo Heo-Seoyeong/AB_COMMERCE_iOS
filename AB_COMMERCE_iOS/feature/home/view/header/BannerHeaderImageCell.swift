@@ -20,7 +20,7 @@ class BannerHeaderImageCell: BaseCollectionViewCell {
     super.commonInit()
     
     self.setUI()
-    self.setNeedsUpdateConstraints()
+    self.setConstraints()
   }
 
   func bind(_ image: String?) {
@@ -37,12 +37,10 @@ extension BannerHeaderImageCell {
     self.addSubview(self.imageView)
   }
   
-  override func updateConstraints() {
+  private func setConstraints() {
     self.imageView.snp.makeConstraints { make in
       make.top.leading.trailing.bottom.equalToSuperview()
     }
-    
-    super.updateConstraints()
   }
   
 }

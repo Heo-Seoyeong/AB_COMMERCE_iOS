@@ -61,7 +61,7 @@ extension HomeViewController {
     self.collection.refreshControl = self.refreshControl
     self.refreshControl.addTarget(self, action: #selector(refreshHome), for: .valueChanged)
     
-    self.collection.register(HomeProductCell.self, forCellWithReuseIdentifier: "HomeProductCell")
+    self.collection.register(HomeGoodsCell.self, forCellWithReuseIdentifier: "HomeGoodsCell")
     self.collection.register(BannerHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "BannerHeaderView")
   }
   
@@ -110,7 +110,7 @@ extension HomeViewController {
         
         if let item = self.viewModel.goods.firstIndex(where: { $0.id == goods.id }) {
           let cell = self.collection.cellForItem(at: IndexPath(item: item, section: 0))
-          if let cell = cell as? HomeProductCell {
+          if let cell = cell as? HomeGoodsCell {
             cell.bind(goods)
           }
         }
@@ -127,8 +127,8 @@ extension HomeViewController: UICollectionViewDataSource {
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeProductCell", for: indexPath)
-    if let cell = cell as? HomeProductCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeGoodsCell", for: indexPath)
+    if let cell = cell as? HomeGoodsCell {
       cell.bind(self.viewModel.goods[indexPath.item])
     }
     return cell
@@ -140,7 +140,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDelegate
  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let width = UIScreen.main.bounds.width
-    let height = HomeProductCell.cellHeight(goods: self.viewModel.goods[indexPath.item])
+    let height = HomeGoodsCell.cellHeight(goods: self.viewModel.goods[indexPath.item])
     return CGSize(width: width, height: height)
   }
   
@@ -156,7 +156,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDelegate
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
     let width = UIScreen.main.bounds.width
-    let height = UIScreen.main.bounds.width / 750.0 * 527.0
+    let height = ceil(UIScreen.main.bounds.width / 750.0 * 527.0)
 
     return CGSize(width: width, height: height)
   }

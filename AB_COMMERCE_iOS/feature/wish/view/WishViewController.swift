@@ -65,7 +65,7 @@ extension WishViewController {
     self.collection.refreshControl = self.refreshControl
     self.refreshControl.addTarget(self, action: #selector(refreshHome), for: .valueChanged)
     
-    self.collection.register(WishProductCell.self, forCellWithReuseIdentifier: "WishProductCell")
+    self.collection.register(WishGoodsCell.self, forCellWithReuseIdentifier: "WishGoodsCell")
   }
   
   @objc private func refreshHome() {
@@ -106,8 +106,8 @@ extension WishViewController: UICollectionViewDataSource {
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WishProductCell", for: indexPath)
-    if let cell = cell as? WishProductCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WishGoodsCell", for: indexPath)
+    if let cell = cell as? WishGoodsCell {
       cell.bind(self.viewModel.goods[indexPath.item])
     }
     return cell
@@ -119,7 +119,7 @@ extension WishViewController: UICollectionViewDelegate, UICollectionViewDelegate
  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let width = UIScreen.main.bounds.width
-    let height = HomeProductCell.cellHeight(goods: self.viewModel.goods[indexPath.item])
+    let height = WishGoodsCell.cellHeight(goods: self.viewModel.goods[indexPath.item])
 
     return CGSize(width: width, height: height)
   }

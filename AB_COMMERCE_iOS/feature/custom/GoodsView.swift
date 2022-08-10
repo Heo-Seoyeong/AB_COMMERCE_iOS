@@ -1,5 +1,5 @@
 //
-//  ProductView.swift
+//  GoodsView.swift
 //  AB_COMMERCE_iOS
 //
 //  Created by rio on 2022/08/08.
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import SDWebImage
 
-class ProductView: BaseView {
+class GoodsView: BaseView {
   
   private let thumbnailImageView: UIImageView = {
     let imageView = UIImageView()
@@ -56,7 +56,7 @@ class ProductView: BaseView {
   
   private let sellStackView = BaseStackView(axis: .horizontal, spacing: 6.0)
   
-  private let newBadgeView = NewProductBadgeView()
+  private let newBadgeView = NewGoodsBadgeView()
   
   private let sellCountLabel: UILabel = {
     let label = UILabel()
@@ -83,7 +83,7 @@ class ProductView: BaseView {
     super.commonInit()
     
     self.setUI()
-    self.setNeedsUpdateConstraints()
+    self.setConstraints()
   }
   
   func bind(_ data: Goods) {
@@ -132,7 +132,7 @@ class ProductView: BaseView {
   
 }
 
-extension ProductView {
+extension GoodsView {
   
   private func setUI() {
     self.wishButton.addTarget(self, action: #selector(wishButtonDidTap), for: .touchUpInside)
@@ -163,11 +163,12 @@ extension ProductView {
     self.infoStackView.setCustomSpacing(20.0, after: self.nameLabel)
   }
   
-  override func updateConstraints() {
+  private func setConstraints() {
     self.thumbnailImageView.snp.makeConstraints { make in
       make.top.equalToSuperview().offset(16.0)
       make.leading.equalToSuperview().offset(16.0)
       make.height.width.equalTo(80.0)
+      make.bottom.lessThanOrEqualToSuperview()
     }
     
     self.wishButton.snp.makeConstraints { make in
@@ -180,27 +181,23 @@ extension ProductView {
       make.top.equalToSuperview().offset(16.0)
       make.leading.equalTo(self.thumbnailImageView.snp.trailing).offset(12.0)
       make.trailing.equalToSuperview().offset(-16.0)
-      make.bottom.equalToSuperview().offset(-16.0)
     }
     
     self.priceStackView.snp.makeConstraints { make in
+      make.leading.trailing.equalToSuperview()
       make.height.equalTo(20.0)
     }
     
     self.sellStackView.snp.makeConstraints { make in
+      make.leading.trailing.equalToSuperview()
       make.height.equalTo(24.0)
-    }
-    
-    self.newBadgeView.snp.makeConstraints { make in
-      make.width.equalTo(46.0)
     }
     
     self.bottomBarView.snp.makeConstraints { make in
       make.leading.trailing.bottom.equalToSuperview()
       make.height.equalTo(0.3)
     }
-    
-    super.updateConstraints()
   }
   
 }
+

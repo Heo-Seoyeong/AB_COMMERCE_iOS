@@ -1,5 +1,5 @@
 //
-//  NewProductBadgeView.swift
+//  NewGoodsBadgeView.swift
 //  AB_COMMERCE_iOS
 //
 //  Created by rio on 2022/08/08.
@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class NewProductBadgeView: BaseView {
+class NewGoodsBadgeView: BaseView {
   
   private let newLabel: UILabel = {
     let label = UILabel()
@@ -23,12 +23,12 @@ class NewProductBadgeView: BaseView {
     super.commonInit()
     
     self.setUI()
-    self.setNeedsUpdateConstraints()
+    self.setConstraints()
   }
   
 }
 
-extension NewProductBadgeView {
+extension NewGoodsBadgeView {
   
   private func setUI() {
     self.layer.borderWidth = 1.0
@@ -38,12 +38,12 @@ extension NewProductBadgeView {
     self.addSubview(self.newLabel)
   }
   
-  override func updateConstraints() {
+  private func setConstraints() {
     self.newLabel.snp.makeConstraints { make in
-      make.center.equalToSuperview()
+      make.centerY.equalToSuperview()
+      make.leading.equalToSuperview().offset(6.0)
+      make.trailing.equalToSuperview().offset(-6.0)
     }
-    
-    super.updateConstraints()
   }
   
 }

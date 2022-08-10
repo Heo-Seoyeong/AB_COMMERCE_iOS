@@ -11,6 +11,8 @@ class BannerHeaderView: UICollectionReusableView {
   
   private let collection: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
+    layout.minimumInteritemSpacing = .zero
+    layout.minimumLineSpacing = .zero
     layout.scrollDirection = .horizontal
     return UICollectionView(frame: .zero, collectionViewLayout: layout)
   }()
@@ -31,7 +33,7 @@ class BannerHeaderView: UICollectionReusableView {
     super.init(frame: frame)
     
     self.setUI()
-    self.setNeedsUpdateConstraints()
+    self.setConstraints()
     self.setCollectionView()
   }
   
@@ -48,7 +50,7 @@ extension BannerHeaderView {
     self.addSubview(self.pageView)
   }
   
-  override func updateConstraints() {
+  private func setConstraints() {
     self.collection.snp.makeConstraints { make in
       make.top.leading.trailing.bottom.equalToSuperview()
     }
@@ -59,8 +61,6 @@ extension BannerHeaderView {
       make.height.equalTo(24.0)
       make.width.equalTo(40.0)
     }
-    
-    super.updateConstraints()
   }
   
   private func setCollectionView() {
@@ -97,17 +97,9 @@ extension BannerHeaderView: UICollectionViewDelegate, UICollectionViewDelegateFl
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let width = UIScreen.main.bounds.width
-    let height = UIScreen.main.bounds.width / 750.0 * 527.0
+    let height = ceil(UIScreen.main.bounds.width / 750.0 * 527.0)
     
     return CGSize(width: width, height: height)
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return 0
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    return 0
   }
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
