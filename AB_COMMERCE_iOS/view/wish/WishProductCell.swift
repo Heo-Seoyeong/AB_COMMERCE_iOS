@@ -35,6 +35,8 @@ extension WishProductCell {
     self.productView.snp.makeConstraints { make in
       make.top.leading.trailing.bottom.equalToSuperview()
     }
+    
+    super.updateConstraints()
   }
   
 }

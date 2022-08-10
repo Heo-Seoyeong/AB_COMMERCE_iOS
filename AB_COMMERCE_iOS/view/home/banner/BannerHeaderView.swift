@@ -59,6 +59,8 @@ extension BannerHeaderView {
       make.height.equalTo(24.0)
       make.width.equalTo(40.0)
     }
+    
+    super.updateConstraints()
   }
   
   private func setCollectionView() {

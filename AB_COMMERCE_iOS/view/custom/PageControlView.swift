@@ -46,6 +46,8 @@ extension PageControlView {
     self.countLabel.snp.makeConstraints { make in
       make.center.equalToSuperview()
     }
+    
+    super.updateConstraints()
   }
   
 }

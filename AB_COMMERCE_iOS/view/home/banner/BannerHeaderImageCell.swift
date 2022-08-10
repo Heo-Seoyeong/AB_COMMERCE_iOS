@@ -41,6 +41,8 @@ extension BannerHeaderImageCell {
     self.imageView.snp.makeConstraints { make in
       make.top.leading.trailing.bottom.equalToSuperview()
     }
+    
+    super.updateConstraints()
   }
   
 }
