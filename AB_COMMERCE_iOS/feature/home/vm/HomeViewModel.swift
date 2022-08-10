@@ -36,31 +36,27 @@ class HomeViewModel {
 extension HomeViewModel {
   
   func getHomeData(lastId: Int? = nil) {
-    if let lastId = lastId {
-      self.repository.getHomeGoodsList(lastId: lastId)
-        .subscribe { goodsList in
-          guard !goodsList.isEmpty else {
-            self.reloadAction.onNext(.last)
-            return
-          }
-
-          self.goods += goodsList
-          self.reloadAction.onNext(.more)
-        } onError: { error in
-          print("API Error : getHomeGoodsList : \(error.localizedDescription)")
-        }
-        .disposed(by: self.disposeBag)
-    } else {
-      self.repository.getHomeFirstData()
-        .subscribe { bannersList, goodsList in
-          self.banners = bannersList
-          self.goods = goodsList
+    self.repository.getHomeData(lastId: lastId)
+      .subscribe { home in
+        guard lastId != nil else {
+          self.banners = home.banners ?? []
+          self.goods = home.goods ?? []
           self.reloadAction.onNext(.first)
-        } onError: { error in
-          print("API Error : getHomeFirstData : \(error.localizedDescription)")
+          return
         }
-        .disposed(by: self.disposeBag)
-    }
+
+        guard let goods = home.goods, !goods.isEmpty else {
+          self.reloadAction.onNext(.last)
+          return
+        }
+        
+        self.goods += home.goods ?? []
+        self.reloadAction.onNext(.more)
+        
+      } onError: { error in
+        print("API Error : getHomeGoodsList : \(error.localizedDescription)")
+      }
+      .disposed(by: self.disposeBag)
   }
   
 }

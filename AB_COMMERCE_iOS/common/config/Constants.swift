@@ -7,6 +7,4 @@
 
 import Foundation
 
-public let BASE_URL: String = {
-  return "http://d2bab9i9pr8lds.cloudfront.net/api/"
-}()
+public let BASE_URL: String = "http://d2bab9i9pr8lds.cloudfront.net/api/"

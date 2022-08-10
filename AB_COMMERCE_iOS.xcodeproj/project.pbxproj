@@ -39,7 +39,7 @@
 		2835FB8A28A0F553009E8404 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835FB8928A0F552009E8404 /* Home.swift */; };
 		2835FB8C28A20E01009E8404 /* BannerHeaderImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835FB8B28A20E01009E8404 /* BannerHeaderImageCell.swift */; };
 		2835FB8E28A2109C009E8404 /* PageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835FB8D28A2109C009E8404 /* PageControlView.swift */; };
-		2835FB9128A21EEE009E8404 /* GoodsRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835FB9028A21EEE009E8404 /* GoodsRealm.swift */; };
+		2835FB9128A21EEE009E8404 /* GoodsWishRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835FB9028A21EEE009E8404 /* GoodsWishRealm.swift */; };
 		2835FB9328A22B44009E8404 /* NSNotification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835FB9228A22B44009E8404 /* NSNotification+Extension.swift */; };
 		2835FB9528A2314F009E8404 /* WishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835FB9428A2314F009E8404 /* WishViewModel.swift */; };
 		2835FB9C28A2AEAE009E8404 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835FB9B28A2AEAE009E8404 /* UIImage+Extension.swift */; };
@@ -99,7 +99,7 @@
 		2835FB8928A0F552009E8404 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		2835FB8B28A20E01009E8404 /* BannerHeaderImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerHeaderImageCell.swift; sourceTree = "<group>"; };
 		2835FB8D28A2109C009E8404 /* PageControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControlView.swift; sourceTree = "<group>"; };
-		2835FB9028A21EEE009E8404 /* GoodsRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsRealm.swift; sourceTree = "<group>"; };
+		2835FB9028A21EEE009E8404 /* GoodsWishRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsWishRealm.swift; sourceTree = "<group>"; };
 		2835FB9228A22B44009E8404 /* NSNotification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+Extension.swift"; sourceTree = "<group>"; };
 		2835FB9428A2314F009E8404 /* WishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishViewModel.swift; sourceTree = "<group>"; };
 		2835FB9B28A2AEAE009E8404 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -246,7 +246,7 @@
 		2835FB8F28A21ED9009E8404 /* realm */ = {
 			isa = PBXGroup;
 			children = (
-				2835FB9028A21EEE009E8404 /* GoodsRealm.swift */,
+				2835FB9028A21EEE009E8404 /* GoodsWishRealm.swift */,
 			);
 			path = realm;
 			sourceTree = "<group>";
@@ -642,7 +642,7 @@
 			files = (
 				2835FB2328A097AF009E8404 /* AppDelegate.swift in Sources */,
 				2835FB7E28A0EBD5009E8404 /* HomeRepository.swift in Sources */,
-				2835FB9128A21EEE009E8404 /* GoodsRealm.swift in Sources */,
+				2835FB9128A21EEE009E8404 /* GoodsWishRealm.swift in Sources */,
 				2835FB8A28A0F553009E8404 /* Home.swift in Sources */,
 				2835FB5D28A0B5BB009E8404 /* BannerHeaderView.swift in Sources */,
 				2835FB7C28A0EB3D009E8404 /* HomeViewModel.swift in Sources */,

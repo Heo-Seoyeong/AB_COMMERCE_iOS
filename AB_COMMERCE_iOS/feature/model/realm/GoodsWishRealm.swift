@@ -38,6 +38,10 @@ class GoodsWishRealm: Object {
     return "id"
   }
   
+}
+
+extension GoodsWishRealm {
+  
   func click(goods: Goods) {
     if self.isExist(id: goods.id) == false {
       self.add(goods: goods)

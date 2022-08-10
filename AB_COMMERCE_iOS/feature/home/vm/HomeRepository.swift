@@ -19,24 +19,9 @@ class HomeRepository {
 
 extension HomeRepository {
   
-  func getHomeFirstData() -> Observable<([Banners], [Goods])> {
-    return self.provider.rx.request(.goodsList())
-      .map(Home.self)
-      .flatMap{ homeData -> Single<([Banners], [Goods])> in
-        let banners = homeData.banners ?? []
-        let goods = homeData.goods ?? []
-        return .just((banners, goods))
-      }
-      .asObservable()
-  }
-  
-  func getHomeGoodsList(lastId: Int) -> Observable<[Goods]> {
+  func getHomeData(lastId: Int? = nil) -> Observable<Home> {
     return self.provider.rx.request(.goodsList(lastId: lastId))
       .map(Home.self)
-      .flatMap{ homeData -> Single<[Goods]> in
-        let goods = homeData.goods ?? []
-        return .just(goods)
-      }
       .asObservable()
   }
   
